@@ -9,14 +9,61 @@
 package currencyconverterjavaobject;
 
 
+// IMPORTAÇÃO DE BIBLIOTECAS:
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
+
+
 // MÉTODO PRINCIPAL DA CLASSE:
 public class CurrencyConverterJavaObjectForm extends javax.swing.JFrame {
 
+    
+    // DECLARAÇÃO DE VARIAVEIS E OBJETOS:
+    BasicComboBoxRenderer.UIResource UIResource = new BasicComboBoxRenderer.UIResource();  
+    
     
     // " INICIALIZADOR ":
     public CurrencyConverterJavaObjectForm() {
         
         initComponents();
+        ImageIcon icone = new ImageIcon(getClass().getResource("/icones/money_yen.png"));
+        setIconImage(icone.getImage());
+        txt_escolha_de_moeda_original.removeAllItems();
+        txt_escolha_de_moeda_destino.removeAllItems();
+        txt_botao_limpar_e_liberar.setEnabled(false);
+        
+        txt_program_icon.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_moeda_solicitada.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_valor_convertido.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_valor_moeda_original.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_valor_moeda_destino.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        
+        UIResource.setHorizontalAlignment(SwingConstants.CENTER);
+        txt_escolha_de_moeda_original.setRenderer(UIResource);
+        txt_escolha_de_moeda_destino.setRenderer(UIResource);
+        
+        int contador_numerico = 0;
+        while ( contador_numerico != 11 ) {
+            
+            if ( contador_numerico == 0 ) { txt_escolha_de_moeda_original.addItem("Real"); txt_escolha_de_moeda_destino.addItem("Real"); }
+            if ( contador_numerico == 1 ) { txt_escolha_de_moeda_original.addItem("Dólar Americano"); txt_escolha_de_moeda_destino.addItem("Dólar Americano"); }
+            if ( contador_numerico == 2 ) { txt_escolha_de_moeda_original.addItem("Dólar Australiano"); txt_escolha_de_moeda_destino.addItem("Dólar Australiano"); }
+            if ( contador_numerico == 3 ) { txt_escolha_de_moeda_original.addItem("Dólar Canadense"); txt_escolha_de_moeda_destino.addItem("Dólar Canadense"); }
+            if ( contador_numerico == 4 ) { txt_escolha_de_moeda_original.addItem("Euro"); txt_escolha_de_moeda_destino.addItem("Euro"); }
+            if ( contador_numerico == 5 ) { txt_escolha_de_moeda_original.addItem("Franco Suíço"); txt_escolha_de_moeda_destino.addItem("Franco Suíço"); }
+            if ( contador_numerico == 6 ) { txt_escolha_de_moeda_original.addItem("Iene"); txt_escolha_de_moeda_destino.addItem("Iene"); }
+            if ( contador_numerico == 7 ) { txt_escolha_de_moeda_original.addItem("Libra esterlina"); txt_escolha_de_moeda_destino.addItem("Libra esterlina"); }
+            if ( contador_numerico == 8 ) { txt_escolha_de_moeda_original.addItem("Lira Turca"); txt_escolha_de_moeda_destino.addItem("Lira Turca"); }
+            if ( contador_numerico == 9 ) { txt_escolha_de_moeda_original.addItem("Peso Argentino"); txt_escolha_de_moeda_destino.addItem("Peso Argentino"); }
+            if ( contador_numerico == 10 ) { txt_escolha_de_moeda_original.addItem("Renmimbi"); txt_escolha_de_moeda_destino.addItem("Renmimbi"); }
+            
+            contador_numerico++;
+            
+        }
+        
+        txt_escolha_de_moeda_destino.setSelectedIndex(1);
         
     }
 
@@ -30,24 +77,223 @@ public class CurrencyConverterJavaObjectForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        txt_painel_de_exibicao_geral = new javax.swing.JPanel();
+        txt_botao_limpar_e_liberar = new javax.swing.JButton();
+        txt_botao_converter_valores = new javax.swing.JButton();
+        txt_escolha_de_moeda_original = new javax.swing.JComboBox<>();
+        txt_escolha_de_moeda_destino = new javax.swing.JComboBox<>();
+        txt_valor_moeda_original = new javax.swing.JTextField();
+        txt_valor_moeda_destino = new javax.swing.JTextField();
+        txt_moeda_solicitada = new javax.swing.JLabel();
+        txt_valor_convertido = new javax.swing.JLabel();
+        txt_program_icon = new javax.swing.JLabel();
+        txt_barra_de_menu_geral = new javax.swing.JMenuBar();
+        txt_menu_geral = new javax.swing.JMenu();
+        txt_sub_item_sair = new javax.swing.JMenuItem();
+        txt_menu_sobre = new javax.swing.JMenu();
+        txt_sub_item_info = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CONVERSOR DE MOEDA");
         setResizable(false);
+
+        txt_painel_de_exibicao_geral.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- EXIBIÇÃO GERAL -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_botao_limpar_e_liberar.setBackground(new java.awt.Color(153, 153, 255));
+        txt_botao_limpar_e_liberar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/money_delete.png"))); // NOI18N
+        txt_botao_limpar_e_liberar.setText("LIMPAR E LIBERAR");
+        txt_botao_limpar_e_liberar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        txt_botao_limpar_e_liberar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_botao_limpar_e_liberarActionPerformed(evt);
+            }
+        });
+
+        txt_botao_converter_valores.setBackground(new java.awt.Color(153, 255, 153));
+        txt_botao_converter_valores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/money_add.png"))); // NOI18N
+        txt_botao_converter_valores.setText("CONVERTER VALORES");
+        txt_botao_converter_valores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        txt_botao_converter_valores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_botao_converter_valoresActionPerformed(evt);
+            }
+        });
+
+        txt_escolha_de_moeda_original.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txt_escolha_de_moeda_original.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"DE\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_escolha_de_moeda_destino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txt_escolha_de_moeda_destino.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"PARA\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_valor_moeda_original.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"SUA MOEDA - [ VALOR ]\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_valor_moeda_destino.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"MOEDA DE DESTINO - [ VALOR ]\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_moeda_solicitada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_link.png"))); // NOI18N
+        txt_moeda_solicitada.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- MOEDA SOLICITADA -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_valor_convertido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_add.png"))); // NOI18N
+        txt_valor_convertido.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- VALOR CONVERTIDO -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_program_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/money_yen.png"))); // NOI18N
+        txt_program_icon.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- PROGRAM ICON -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        javax.swing.GroupLayout txt_painel_de_exibicao_geralLayout = new javax.swing.GroupLayout(txt_painel_de_exibicao_geral);
+        txt_painel_de_exibicao_geral.setLayout(txt_painel_de_exibicao_geralLayout);
+        txt_painel_de_exibicao_geralLayout.setHorizontalGroup(
+            txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(txt_painel_de_exibicao_geralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_valor_moeda_original)
+                    .addGroup(txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(txt_painel_de_exibicao_geralLayout.createSequentialGroup()
+                            .addGroup(txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(txt_painel_de_exibicao_geralLayout.createSequentialGroup()
+                                    .addComponent(txt_escolha_de_moeda_original, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(20, 20, 20)
+                                    .addComponent(txt_escolha_de_moeda_destino, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_botao_limpar_e_liberar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_botao_converter_valores, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)))
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(txt_painel_de_exibicao_geralLayout.createSequentialGroup()
+                            .addGroup(txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_moeda_solicitada, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_valor_convertido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txt_program_icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(txt_valor_moeda_destino))
+                .addContainerGap())
+        );
+        txt_painel_de_exibicao_geralLayout.setVerticalGroup(
+            txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_painel_de_exibicao_geralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(txt_painel_de_exibicao_geralLayout.createSequentialGroup()
+                        .addComponent(txt_moeda_solicitada, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_valor_convertido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_program_icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(txt_painel_de_exibicao_geralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_escolha_de_moeda_original, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_escolha_de_moeda_destino, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(txt_valor_moeda_original, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_valor_moeda_destino, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txt_botao_converter_valores, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_botao_limpar_e_liberar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        txt_menu_geral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/script_gear.png"))); // NOI18N
+        txt_menu_geral.setText("GERAL");
+
+        txt_sub_item_sair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        txt_sub_item_sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cancel.png"))); // NOI18N
+        txt_sub_item_sair.setText("SAIR");
+        txt_sub_item_sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_sub_item_sairActionPerformed(evt);
+            }
+        });
+        txt_menu_geral.add(txt_sub_item_sair);
+
+        txt_barra_de_menu_geral.add(txt_menu_geral);
+
+        txt_menu_sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/information.png"))); // NOI18N
+        txt_menu_sobre.setText("SOBRE");
+
+        txt_sub_item_info.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        txt_sub_item_info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/error.png"))); // NOI18N
+        txt_sub_item_info.setText("INFO");
+        txt_sub_item_info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_sub_item_infoActionPerformed(evt);
+            }
+        });
+        txt_menu_sobre.add(txt_sub_item_info);
+
+        txt_barra_de_menu_geral.add(txt_menu_sobre);
+
+        setJMenuBar(txt_barra_de_menu_geral);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txt_painel_de_exibicao_geral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txt_painel_de_exibicao_geral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    // BOTÃO CONVERTER VALORES:
+    private void txt_botao_converter_valoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_botao_converter_valoresActionPerformed
+    
+        JOptionPane.showMessageDialog(null, "ESTA FUNÇÃO ESTA EM DESENVOLVIMENTO!", "AVISO:", 1);
+        
+    }//GEN-LAST:event_txt_botao_converter_valoresActionPerformed
+
+    
+    // BOTÃO CONVERTER LIMPAR E LIBERAR:
+    private void txt_botao_limpar_e_liberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_botao_limpar_e_liberarActionPerformed
+        
+        JOptionPane.showMessageDialog(null, "ESTA FUNÇÃO ESTA EM DESENVOLVIMENTO!", "AVISO:", 1);
+        
+    }//GEN-LAST:event_txt_botao_limpar_e_liberarActionPerformed
+
+    
+    // SUB ITEM DE MENU - SAIR - [ MENU GERAL ]:
+    private void txt_sub_item_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sub_item_sairActionPerformed
+        
+        int confirmar_sair = 0;
+        confirmar_sair = 0;
+        confirmar_sair = JOptionPane.showConfirmDialog(null, "REALMENTE DESEJA SAIR ?");
+
+        if ( confirmar_sair == 0 ) {
+
+            this.dispose();
+
+        }
+
+    }//GEN-LAST:event_txt_sub_item_sairActionPerformed
+
+    
+    // SUB ITEM DE MENU - INFO - [ MENU SOBRE ]:
+    private void txt_sub_item_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sub_item_infoActionPerformed
+        
+        JOptionPane.showMessageDialog(null, "PROGRAMA QUE VISA CONVERTER OS VALORES DAS PRINCIPAIS MOEDAS DO MUNDO:\n"
+                + " - Real,\n"
+                + " - Dólar Americano,\n"
+                + " - Dólar Australiano,\n"
+                + " - Dólar Canadense,\n"
+                + " - Euro,\n"
+                + " - Franco Suíço,\n"
+                + " - Iene,\n"
+                + " - Libra esterlina,\n"
+                + " - Lira Turca,\n"
+                + " - Peso Argentino,\n"
+                + " - Renmimbi.", "AVISO:", 1);
+        
+    }//GEN-LAST:event_txt_sub_item_infoActionPerformed
 
     
     /**
@@ -86,6 +332,21 @@ public class CurrencyConverterJavaObjectForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar txt_barra_de_menu_geral;
+    private javax.swing.JButton txt_botao_converter_valores;
+    private javax.swing.JButton txt_botao_limpar_e_liberar;
+    private javax.swing.JComboBox<String> txt_escolha_de_moeda_destino;
+    private javax.swing.JComboBox<String> txt_escolha_de_moeda_original;
+    private javax.swing.JMenu txt_menu_geral;
+    private javax.swing.JMenu txt_menu_sobre;
+    private javax.swing.JLabel txt_moeda_solicitada;
+    private javax.swing.JPanel txt_painel_de_exibicao_geral;
+    private javax.swing.JLabel txt_program_icon;
+    private javax.swing.JMenuItem txt_sub_item_info;
+    private javax.swing.JMenuItem txt_sub_item_sair;
+    private javax.swing.JLabel txt_valor_convertido;
+    private javax.swing.JTextField txt_valor_moeda_destino;
+    private javax.swing.JTextField txt_valor_moeda_original;
     // End of variables declaration//GEN-END:variables
 }
 
