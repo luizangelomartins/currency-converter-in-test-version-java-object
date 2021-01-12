@@ -272,7 +272,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="- &quot;SUA MOEDA - [ VALOR ]&quot; -">
+                <TitledBorder title="- &quot;SUA MOEDA - [ VALOR EM RELA&#xc7;&#xc3;O ]&quot; -">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder roundedCorners="true" thickness="2"/>
                   </Border>
@@ -286,7 +286,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="- &quot;MOEDA DE DESTINO - [ VALOR ]&quot; -">
+                <TitledBorder title="- &quot;SUA MOEDA - [ VALOR EM MA&#xd5;S ]&quot; -">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder roundedCorners="true" thickness="2"/>
                   </Border>

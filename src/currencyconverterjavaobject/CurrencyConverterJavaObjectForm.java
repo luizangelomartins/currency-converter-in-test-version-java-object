@@ -10,6 +10,8 @@ package currencyconverterjavaobject;
 
 
 // IMPORTAÇÃO DE BIBLIOTECAS:
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -63,6 +65,8 @@ public class CurrencyConverterJavaObjectForm extends javax.swing.JFrame {
             
         }
         
+        txt_valor_moeda_original.setText("");
+        txt_valor_moeda_destino.setText("");
         txt_escolha_de_moeda_destino.setSelectedIndex(1);
         
     }
@@ -125,9 +129,9 @@ public class CurrencyConverterJavaObjectForm extends javax.swing.JFrame {
         txt_escolha_de_moeda_destino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         txt_escolha_de_moeda_destino.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"PARA\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        txt_valor_moeda_original.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"SUA MOEDA - [ VALOR ]\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_valor_moeda_original.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"SUA MOEDA - [ VALOR EM RELAÇÃO ]\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        txt_valor_moeda_destino.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"MOEDA DE DESTINO - [ VALOR ]\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_valor_moeda_destino.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"SUA MOEDA - [ VALOR EM MAÕS ]\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         txt_moeda_solicitada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_link.png"))); // NOI18N
         txt_moeda_solicitada.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- MOEDA SOLICITADA -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -247,8 +251,82 @@ public class CurrencyConverterJavaObjectForm extends javax.swing.JFrame {
     
     // BOTÃO CONVERTER VALORES:
     private void txt_botao_converter_valoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_botao_converter_valoresActionPerformed
-    
-        JOptionPane.showMessageDialog(null, "ESTA FUNÇÃO ESTA EM DESENVOLVIMENTO!", "AVISO:", 1);
+
+        if ( !txt_valor_moeda_original.getText().trim().equals("") && !txt_valor_moeda_destino.getText().trim().equals("") ) {
+        
+            int confirmar_converter_valor = 0;
+            int moeda1 = txt_escolha_de_moeda_original.getSelectedIndex();
+            int moeda2 = txt_escolha_de_moeda_destino.getSelectedIndex();
+            String nome1 = "";
+            String nome2 = "";
+
+            if ( moeda1 == 0 ) { nome1 = "Real"; }
+            if ( moeda1 == 1 ) { nome1 = "Dólar Americano"; }
+            if ( moeda1 == 2 ) { nome1 = "Dólar Australiano"; }
+            if ( moeda1 == 3 ) { nome1 = "Dólar Canadense"; }
+            if ( moeda1 == 4 ) { nome1 = "Euro"; }
+            if ( moeda1 == 5 ) { nome1 = "Franco Suíço"; }
+            if ( moeda1 == 6 ) { nome1 = "Iene"; }
+            if ( moeda1 == 7 ) { nome1 = "Libra esterlina"; }
+            if ( moeda1 == 8 ) { nome1 = "Lira Turca"; }
+            if ( moeda1 == 9 ) { nome1 = "Peso Argentino"; }
+            if ( moeda1 == 10 ) { nome1 = "Renmimbi"; }
+            
+            if ( moeda2 == 0 ) { nome2 = "Real"; }
+            if ( moeda2 == 1 ) { nome2 = "Dólar Americano"; }
+            if ( moeda2 == 2 ) { nome2 = "Dólar Australiano"; }
+            if ( moeda2 == 3 ) { nome2 = "Dólar Canadense"; }
+            if ( moeda2 == 4 ) { nome2 = "Euro"; }
+            if ( moeda2 == 5 ) { nome2 = "Franco Suíço"; }
+            if ( moeda2 == 6 ) { nome2 = "Iene"; }
+            if ( moeda2 == 7 ) { nome2 = "Libra esterlina"; }
+            if ( moeda2 == 8 ) { nome2 = "Lira Turca"; }
+            if ( moeda2 == 9 ) { nome2 = "Peso Argentino"; }
+            if ( moeda2 == 10 ) { nome2 = "Renmimbi"; }
+            
+            confirmar_converter_valor = 0;
+            confirmar_converter_valor = JOptionPane.showConfirmDialog(null, "DESEJA CONFIRMAR A CONVERSÃO ?\n\n"
+                    + " - DE: " + nome1 + "\n" 
+                    + " - PARA: " + nome2);
+
+            if ( confirmar_converter_valor == 0 ) {
+
+                try {
+                
+                    double valor_moeda;
+                    double quantia_moeda;
+                    double resultado;
+
+                    valor_moeda = Double.valueOf(txt_valor_moeda_original.getText());
+                    quantia_moeda = Double.valueOf(txt_valor_moeda_destino.getText());
+                    resultado = valor_moeda * quantia_moeda;
+                    BigDecimal decimal1 = new BigDecimal(resultado).setScale(2, RoundingMode.HALF_EVEN);
+                
+                    txt_moeda_solicitada.setText("  " + nome2);
+                    txt_valor_convertido.setText("  " + String.valueOf(decimal1));
+                    
+                    txt_botao_converter_valores.setEnabled(false);
+                    txt_escolha_de_moeda_original.setEnabled(false);
+                    txt_escolha_de_moeda_destino.setEnabled(false);
+                    txt_valor_moeda_original.setEditable(false);
+                    txt_valor_moeda_destino.setEditable(false);
+                    txt_botao_limpar_e_liberar.setEnabled(true);
+                    
+                } catch ( NumberFormatException e) {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSARIOS COM DADOS CORRETOS!", "AVISO:", 2);
+                    
+                }
+
+            }
+
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSARIOS!\n\n"
+                    + " - SUA MOEDA - [ VALOR ]\n"
+                    + " - MOEDA DE DESTINO - [ VALOR ]", "AVISO:", 2);
+            
+        }
         
     }//GEN-LAST:event_txt_botao_converter_valoresActionPerformed
 
