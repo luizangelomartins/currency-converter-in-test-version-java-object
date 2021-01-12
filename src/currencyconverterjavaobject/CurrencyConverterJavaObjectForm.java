@@ -334,8 +334,29 @@ public class CurrencyConverterJavaObjectForm extends javax.swing.JFrame {
     // BOTÃO CONVERTER LIMPAR E LIBERAR:
     private void txt_botao_limpar_e_liberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_botao_limpar_e_liberarActionPerformed
         
-        JOptionPane.showMessageDialog(null, "ESTA FUNÇÃO ESTA EM DESENVOLVIMENTO!", "AVISO:", 1);
-        
+        int confirmar_limpar_e_liberar = 0;
+        confirmar_limpar_e_liberar = 0;
+        confirmar_limpar_e_liberar = JOptionPane.showConfirmDialog(null, "LIBERAR OUTRO CALCULO DE CONVERSÃO ?");
+
+        if ( confirmar_limpar_e_liberar == 0 ) {
+
+            txt_valor_moeda_original.setText("");
+            txt_valor_moeda_destino.setText("");
+            txt_moeda_solicitada.setText(null);
+            txt_valor_convertido.setText(null);
+            
+            txt_escolha_de_moeda_original.setSelectedIndex(0);
+            txt_escolha_de_moeda_destino.setSelectedIndex(1);
+            
+            txt_botao_converter_valores.setEnabled(true);
+            txt_escolha_de_moeda_original.setEnabled(true);
+            txt_escolha_de_moeda_destino.setEnabled(true);
+            txt_valor_moeda_original.setEditable(true);
+            txt_valor_moeda_destino.setEditable(true);
+            txt_botao_limpar_e_liberar.setEnabled(false);
+
+        }
+
     }//GEN-LAST:event_txt_botao_limpar_e_liberarActionPerformed
 
     
